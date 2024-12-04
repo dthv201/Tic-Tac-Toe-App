@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color> <!-- Red Color for X -->
+    <color name="blue">#0000FF</color> <!-- Blue Color for O -->
 </resources>
