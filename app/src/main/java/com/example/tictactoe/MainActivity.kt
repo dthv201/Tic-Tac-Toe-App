@@ -28,6 +28,9 @@ class MainActivity : AppCompatActivity()
         setContentView(binding.root)
 
         initBoard()
+        binding.playAgainButton.setOnClickListener {
+            resetBoard()
+        }
 
     }
 
@@ -92,25 +95,28 @@ class MainActivity : AppCompatActivity()
         return false
     }
 
+    private fun result(title: String) {
 
-    private fun result(title: String)
-    {
-        AlertDialog.Builder(this)
-            .setTitle(title)
-            .setPositiveButton("Play Again") { _, _ ->
-                resetBoard()
-            }
-            .setCancelable(false)
-            .show()
+        binding.gameResultTV.text = title
+        binding.gameResultTV.visibility = View.VISIBLE
+
+        binding.playAgainButton.visibility = View.VISIBLE
+
+        for (button in boardList)
+        {
+            button.isEnabled = false
+        }
     }
-
-
 
     private fun resetBoard() {
         for (button in boardList)
         {
             button.text = ""
+            button.isEnabled = true
         }
+        binding.gameResultTV.visibility = View.GONE
+        binding.playAgainButton.visibility = View.GONE
+
         currentTurn = firstTurn
         setTurnLabel()
     }
